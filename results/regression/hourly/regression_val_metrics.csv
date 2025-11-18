@@ -1,0 +1,4 @@
+Model,Best_Params,Val_MAE,Val_RMSE,Val_R2
+LinearRegression,{},12.407074803562713,29.005295626401253,0.9438964894477504
+RandomForestRegressor,"{'n_estimators': 200, 'max_depth': None, 'min_samples_split': 5}",11.784205035500246,31.249231776249605,0.9520902495797281
+MLPRegressor,"{'hidden_layer_sizes': (64, 32), 'max_iter': 300, 'learning_rate_init': 0.001}",12.169055768422549,28.669644678888954,0.8163350880223349
