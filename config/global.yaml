@@ -1,21 +1,11 @@
-# ============================================================
-# 🌍 Global Configuration for Air Quality Forecasting Project
-# ============================================================
 
-project:
-  name: "AirQualityForecasting"
-  version: "1.0.0"
-  author: "Yilin Ge"
-  created_at: "2025-11-09"
 
-# ------------------------------------------------------------
-# 📁 文件路径配置
-# ------------------------------------------------------------
+
 paths:
   raw_data: "data/raw/AirQualityUCI.csv"
   processed_data: "data/processed/air_quality_clean.csv"
   features_data: "data/features/features_train.csv"
-  features_dir: data/features
+  features_dir: "data/features"
   regression_results_dir: "results/regression/"
   classification_results_dir: "results/classification/"
   experiments_dir: "experiments/"
@@ -26,16 +16,14 @@ paths:
   classification_plots_dir: "results/classification/plots/"
   plots: "results/plots/"
 
-# ------------------------------------------------------------
-# 🧩 数据相关参数
-# ------------------------------------------------------------
+
 data:
   all_pollutants: ["CO(GT)", "NOx(GT)", "NO2(GT)", "C6H6(GT)", "NMHC(GT)"]
   targets: ["CO(GT)", "NOx(GT)", "NO2(GT)", "C6H6(GT)"]
   datetime_col: "DateTime"
   drop_columns: ["NMHC(GT)"]
-  split_method: "year"   # 可选: "year" 或 "ratio"
-  split_ratio: 0.8         # 仅在 ratio 模式下生效
+  split_method: "year"
+  split_ratio: 0.8
   test_split_ratio: 0.2
   missing_value: -200
   normalize: true
@@ -53,12 +41,11 @@ data:
       RH: "mean"
       AH: "mean"
 
-  # ==== ⏳ Feature Engineering Parameters ====
   feature_engineering:
-    lookback: 3                  # 滞后步数
-    roll_windows: [3, 6, 12]     # 滚动窗口大小
-    include_time_features: true  # 是否添加 hour/weekday/month
-    use_cyclical_encoding: true  # 是否对时间特征做正弦/余弦编码
+    lookback: 3
+    roll_windows: [3, 6, 12]
+    include_time_features: true
+    use_cyclical_encoding: true
 
 prediction:
   horizons_hourly: [ 1, 6, 12, 24 ]
@@ -69,27 +56,18 @@ classification:
   horizons: [1, 6, 12, 24]
   target_prefix: "CO_class"
 
-# ------------------------------------------------------------
-# ⚙️ 模型训练参数
-# ------------------------------------------------------------
 training:
   seed: 42
-  device: "mps"                 # "cpu", "cuda", "mps"
+  device: "mps"
   save_model: true
   save_predictions: true
   verbose: true
 
-# ------------------------------------------------------------
-# 🪵 日志输出参数
-# ------------------------------------------------------------
 logging:
-  level: "INFO"                # DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
   log_to_file: true
   log_filename: "training.log"
 
-# ------------------------------------------------------------
-# 📊 评估参数
-# ------------------------------------------------------------
 evaluation:
   metrics: ["MAE", "RMSE", "R2"]
   visualize: true

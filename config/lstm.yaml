@@ -1,22 +1,20 @@
-# ============================================================
-# ⚙️ Model Configuration: LSTM Forecasting
-# ============================================================
+
 
 model:
   name: "LSTM"
   type: "sequence_forecasting"
-  input_size: 8             # 输入特征维度（根据你选择的特征数调整）
-  hidden_size: 64           # LSTM隐藏层大小
-  num_layers: 2             # LSTM层数
-  dropout: 0.2              # Dropout比例
-  bidirectional: false      # 是否使用双向LSTM
-  output_size: 1            # 预测目标维度（通常为1）
-  activation: "relu"        # 可选: relu, tanh, sigmoid
+  input_size: 8
+  hidden_size: 64
+  num_layers: 2
+  dropout: 0.2
+  bidirectional: false
+  output_size: 1
+  activation: "relu"
 
 data:
-  target: "CO(GT)"          # 要预测的污染物浓度
-  lookback: 24              # 输入时间窗口长度（过去24小时）
-  horizon: 1                # 预测未来1小时
+  target: "CO(GT)"
+  lookback: 24
+  horizon: 1
   batch_size: 32
   shuffle: false
   normalize: true
@@ -24,12 +22,12 @@ data:
 training:
   epochs: 50
   learning_rate: 0.001
-  optimizer: "adam"         # 可选: adam, sgd, rmsprop
-  loss_fn: "mse"            # 可选: mse, mae, huber
-  scheduler: true           # 是否使用学习率调度
+  optimizer: "adam"
+  loss_fn: "mse"
+  scheduler: true
   early_stopping: true
   patience: 5
-  gradient_clip: 1.0        # 梯度裁剪阈值
+  gradient_clip: 1.0
   save_best_only: true
   model_save_name: "lstm_best.pt"
 

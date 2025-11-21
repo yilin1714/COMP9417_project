@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="575211f3-ca10-4c61-a9e8-450e795ba903" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/config/global.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/global.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/lstm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/lstm.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/random_forest.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/random_forest.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis/detect_anomalies.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/detect_anomalies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/data_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/data_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/feature_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/feature_engineering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/feature_engineering_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/feature_engineering_classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/feature_engineering_daily.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/feature_engineering_daily.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/feature_engineering_hourly.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/feature_engineering_hourly.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/preprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/split_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/split_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/split_dataset_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/split_dataset_classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/classification_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/classification_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/evaluate_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/evaluate_classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/evaluate_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/evaluate_regression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/regression_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/regression_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/train_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/train_classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/train_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/train_regression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualization/plot_classification_summary.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/plot_classification_summary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualization/plot_correlation_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/plot_correlation_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualization/plot_meteorological_relations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/plot_meteorological_relations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualization/plot_pollutants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/visualization/plot_pollutants.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jupyter Notebook" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;yilin1714&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/yilin1714/COMP9417_project.git&quot;,
+    &quot;accountId&quot;: &quot;aea6adab-f265-48c1-ab32-8368faa01027&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="35Bw6Oy42w4fJhOECJohu0UD8Q1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.classification_models.executor&quot;: &quot;Run&quot;,
+    &quot;Python.correlation_analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_loader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.detect_anomalies.executor&quot;: &quot;Run&quot;,
+    &quot;Python.evaluate_classification.executor&quot;: &quot;Run&quot;,
+    &quot;Python.evaluate_regression.executor&quot;: &quot;Run&quot;,
+    &quot;Python.feature_engineering.executor&quot;: &quot;Run&quot;,
+    &quot;Python.feature_engineering_classification.executor&quot;: &quot;Run&quot;,
+    &quot;Python.feature_engineering_daily.executor&quot;: &quot;Run&quot;,
+    &quot;Python.feature_engineering_hourly.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot_classification_summary.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot_correlation_analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot_meteorological_relations.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot_pollutants.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot_time_patterns.executor&quot;: &quot;Run&quot;,
+    &quot;Python.preprocess.executor&quot;: &quot;Run&quot;,
+    &quot;Python.regression_models.executor&quot;: &quot;Run&quot;,
+    &quot;Python.split_dataset.executor&quot;: &quot;Run&quot;,
+    &quot;Python.split_dataset_classification.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train_classification.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train_regression.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/raw" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23726.102" />
+        <option value="bundled-python-sdk-5e1850174b45-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23726.102" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="575211f3-ca10-4c61-a9e8-450e795ba903" name="Changes" comment="" />
+      <created>1734846338883</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1734846338883</updated>
+      <workItem from="1734846339896" duration="377000" />
+      <workItem from="1762596598259" duration="138551000" />
+      <workItem from="1763521353111" duration="2000" />
+      <workItem from="1763692845913" duration="2721000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/project$regression_models.coverage" NAME="regression_models Coverage Results" MODIFIED="1762741538923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/models" />
+    <SUITE FILE_PATH="coverage/project$feature_engineering_daily.coverage" NAME="feature_engineering_daily Coverage Results" MODIFIED="1763174544913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/project$detect_anomalies.coverage" NAME="detect_anomalies Coverage Results" MODIFIED="1763451081910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/analysis" />
+    <SUITE FILE_PATH="coverage/project$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1763117860729" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/project$feature_engineering_classification.coverage" NAME="feature_engineering_classification Coverage Results" MODIFIED="1763193399559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/project$correlation_analysis.coverage" NAME="correlation_analysis Coverage Results" MODIFIED="1763097406277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/project$feature_engineering_hourly.coverage" NAME="feature_engineering_hourly Coverage Results" MODIFIED="1763173535701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/project$plot_pollutants.coverage" NAME="plot_pollutants Coverage Results" MODIFIED="1763453341347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/project$split_dataset_classification.coverage" NAME="split_dataset_classification Coverage Results" MODIFIED="1763193403102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/project$train_classification.coverage" NAME="train_classification Coverage Results" MODIFIED="1763453162390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/models" />
+    <SUITE FILE_PATH="coverage/project$train_regression.coverage" NAME="train_regression Coverage Results" MODIFIED="1763450530964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/models" />
+    <SUITE FILE_PATH="coverage/project$plot_meteorological_relations.coverage" NAME="plot_meteorological_relations Coverage Results" MODIFIED="1763453330304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/project$classification_models.coverage" NAME="classification_models Coverage Results" MODIFIED="1762941109086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/models" />
+    <SUITE FILE_PATH="coverage/project$plot_classification_summary.coverage" NAME="plot_classification_summary Coverage Results" MODIFIED="1763453319107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/project$evaluate_regression.coverage" NAME="evaluate_regression Coverage Results" MODIFIED="1763454727584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/models" />
+    <SUITE FILE_PATH="coverage/project$feature_engineering.coverage" NAME="feature_engineering Coverage Results" MODIFIED="1763173720695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/project$plot_time_patterns.coverage" NAME="plot_time_patterns Coverage Results" MODIFIED="1763453361201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/project$evaluate_classification.coverage" NAME="evaluate_classification Coverage Results" MODIFIED="1763453232003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/models" />
+    <SUITE FILE_PATH="coverage/project$data_loader.coverage" NAME="data_loader Coverage Results" MODIFIED="1763447358323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/project$plot_correlation_analysis.coverage" NAME="plot_correlation_analysis Coverage Results" MODIFIED="1763453324672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/visualization" />
+    <SUITE FILE_PATH="coverage/project$split_dataset.coverage" NAME="split_dataset Coverage Results" MODIFIED="1763177399766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+  </component>
+</project>

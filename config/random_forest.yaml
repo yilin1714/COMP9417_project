@@ -1,32 +1,30 @@
-# ============================================================
-# 🌲 Model Configuration: Random Forest Regressor
-# ============================================================
+
 
 model:
   name: "RandomForest"
   type: "regression"
   library: "sklearn"
-  n_estimators: 200        # 树的数量
-  max_depth: 15            # 最大深度（控制复杂度）
-  min_samples_split: 4     # 节点划分最小样本数
-  min_samples_leaf: 2      # 叶节点最小样本数
-  max_features: "sqrt"     # 每次划分考虑的特征数
-  bootstrap: true          # 是否使用自助采样
+  n_estimators: 200
+  max_depth: 15
+  min_samples_split: 4
+  min_samples_leaf: 2
+  max_features: "sqrt"
+  bootstrap: true
   random_state: 42
 
 data:
-  target: "CO(GT)"         # 要预测的目标变量
+  target: "CO(GT)"
   features: ["PT08.S1(CO)", "NO2(GT)", "T", "RH", "AH"]
   test_split_ratio: 0.2
-  normalize: true           # 是否标准化特征
-  missing_value: -200       # 缺失值标记
+  normalize: true
+  missing_value: -200
   drop_columns: ["NMHC(GT)"]
 
 training:
   cross_validation: true
-  cv_folds: 5               # K折交叉验证
+  cv_folds: 5
   scoring: "neg_mean_squared_error"
-  n_jobs: -1                # CPU并行线程数 (-1 表示用所有核心)
+  n_jobs: -1
   verbose: 1
   save_model: true
   model_save_name: "random_forest_model.pkl"

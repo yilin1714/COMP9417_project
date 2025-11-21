@@ -1,21 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-train_classification.py
-=========================================
-Train classification models for multiple forecast horizons:
-t+1, t+6, t+12, t+24
-
-Models:
- - Logistic Regression
- - Random Forest
- - MLPClassifier
-
-Uses ONLY:
-    data/splits/X_train_classification.csv
-    data/splits/y_train_classification_t+1.csv
-NO TEST LEAKAGE.
-"""
 
 import pandas as pd
 import numpy as np
@@ -31,9 +13,6 @@ from src.models.classification_models import (
     get_mlp_classifier,
 )
 
-# ============================================================
-# 📊 Evaluation helper
-# ============================================================
 def evaluate_metrics(y_true, y_pred):
     return {
         "Accuracy": accuracy_score(y_true, y_pred),
@@ -42,27 +21,15 @@ def evaluate_metrics(y_true, y_pred):
         "F1": f1_score(y_true, y_pred, average="weighted", zero_division=0),
     }
 
-# ============================================================
-# 🚀 Label encoder: low/mid/high → 0/1/2
-# ============================================================
 def encode_labels(y):
     mapping = {"low": 0, "mid": 1, "high": 2}
     return np.vectorize(mapping.get)(np.array(y))
 
-
-# ============================================================
-# 🔮 Train for one horizon
-# ============================================================
 def train_for_horizon(cfg, horizon):
 
     root = Path(__file__).resolve().parents[2]
     split_dir = root / "data/splits"
 
-    print(f"\n==============================")
-    print(f"   🔮 Training horizon: t+{horizon}")
-    print(f"==============================")
-
-    # Load data
     X_train = pd.read_csv(split_dir / "X_train_classification.csv")
     X_val   = pd.read_csv(split_dir / "X_val_classification.csv")
 
@@ -72,9 +39,6 @@ def train_for_horizon(cfg, horizon):
     y_train = encode_labels(y_train)
     y_val   = encode_labels(y_val)
 
-    # -----------------------------------------
-    # Models
-    # -----------------------------------------
     model_builders = {
         "LogisticRegression": get_logistic_regression,
         "RandomForest": get_random_forest_classifier,
@@ -97,7 +61,7 @@ def train_for_horizon(cfg, horizon):
     results = []
 
     for name, builder in model_builders.items():
-        print(f"\n⚙️ Training {name} for t+{horizon}...")
+        print(f"\nTraining {name} for t+{horizon}...")
 
         best_acc = -np.inf
         best_params = None
@@ -126,7 +90,7 @@ def train_for_horizon(cfg, horizon):
                 best_model = model
                 best_val = metrics
 
-        print(f"🏆 Best {name} params: {best_params}")
+        print(f"Best {name} params: {best_params}")
 
         best_models[name] = best_model
         results.append({
@@ -135,25 +99,18 @@ def train_for_horizon(cfg, horizon):
             **best_val
         })
 
-    # -----------------------------------------
-    # Save models
-    # -----------------------------------------
     model_dir = root / f"results/classification/t+{horizon}"
     model_dir.mkdir(parents=True, exist_ok=True)
 
     for name, model in best_models.items():
         dump(model, model_dir / f"{name}_best.joblib")
 
-    print(f"💾 Saved best models → {model_dir}")
+    print(f"Saved best models → {model_dir}")
 
     return pd.DataFrame(results)
 
-
-# ============================================================
-# 🚀 Main
-# ============================================================
 def train_all_classification(cfg):
-    horizons = cfg["classification"]["horizons"]  # [1,6,12,24]
+    horizons = cfg["classification"]["horizons"]
 
     all_results = []
 
@@ -168,14 +125,10 @@ def train_all_classification(cfg):
     save_path.parent.mkdir(parents=True, exist_ok=True)
 
     final.to_csv(save_path, index=False)
-    print("\n📁 Saved summary:", save_path)
+    print("\nSaved summary:", save_path)
 
     return final
 
-
-# ============================================================
-# ENTRY
-# ============================================================
 if __name__ == "__main__":
     cfg = load_global_config()
     train_all_classification(cfg)

@@ -1,19 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-train_regression.py (Multi-Output Version)
-===========================================
-Trains 3 regression models (Linear, RF, MLP)
-on:
-    - hourly_features.csv
-    - daily_features.csv
-
-Each model predicts ALL target pollutants simultaneously
-using MultiOutputRegressor.
-
-Saves:
-    results/regression/<granularity>/best_models/
-"""
 
 import pandas as pd
 import numpy as np
@@ -32,10 +16,6 @@ from src.models.regression_models import (
     get_mlp_regressor,
 )
 
-# ============================================================
-# 🧮 Evaluation helper
-# Multi-output: metrics averaged over all targets
-# ============================================================
 def evaluate_regression(y_true, y_pred):
     y_true = np.asarray(y_true)
     y_pred = np.asarray(y_pred)
@@ -49,33 +29,26 @@ def evaluate_regression(y_true, y_pred):
 
     return {"MAE": mae, "RMSE": rmse, "R2": r2}
 
-
-# ============================================================
-# 🚀 Train ONE granularity (hourly/daily)
-# ============================================================
 def train_for_feature_file(cfg, features_file):
-    print(f"\n🚀 Training MULTI-OUTPUT regression models using: {features_file}")
+    print(f"\nTraining MULTI-OUTPUT regression models using: {features_file}")
 
     root = Path(__file__).resolve().parents[2]
 
     prefix = features_file.replace("_features.csv", "").replace(".csv", "")
     granularity = prefix  # hourly / daily
-    print(f"📌 Detected granularity: {granularity}")
+    print(f"Detected granularity: {granularity}")
 
-    # 1) Split dataset
     split_dataset(features_file, cfg)
 
-    # 2) Load split data
     split_dir = root / "data" / "splits"
 
     X_train = pd.read_csv(split_dir / f"X_train_{prefix}.csv")
-    y_train = pd.read_csv(split_dir / f"y_train_{prefix}.csv")      # MULTI-OUTPUT
+    y_train = pd.read_csv(split_dir / f"y_train_{prefix}.csv")
     X_val = pd.read_csv(split_dir / f"X_val_{prefix}.csv")
-    y_val = pd.read_csv(split_dir / f"y_val_{prefix}.csv")          # MULTI-OUTPUT
+    y_val = pd.read_csv(split_dir / f"y_val_{prefix}.csv")
 
-    print(f"📊 Loaded: Train={len(X_train)}, Val={len(X_val)}, Targets={list(y_train.columns)}")
+    print(f"Loaded: Train={len(X_train)}, Val={len(X_val)}, Targets={list(y_train.columns)}")
 
-    # 3) Define base regressors
     model_builders = {
         "LinearRegression": get_linear_regression,
         "RandomForestRegressor": get_random_forest_regressor,
@@ -103,11 +76,9 @@ def train_for_feature_file(cfg, features_file):
     best_models = {}
     results = []
 
-    # 4) Hyperparameter tuning (MultiOutputRegressor)
     for name, builder in model_builders.items():
-        print(f"\n⚙️ Training {name} (Multi-output)...")
+        print(f"\nTraining {name} (Multi-output)...")
 
-        # expand grid
         grids = []
         for grid in param_grids.get(name, [{}]):
             if not grid:
@@ -146,7 +117,6 @@ def train_for_feature_file(cfg, features_file):
             **{f"Val_{k}": v for k, v in best_metrics.items()},
         })
 
-    # 5) Save best models
     results_root = root / "results" / "regression"
     models_dir = results_root / granularity / "best_models"
     models_dir.mkdir(parents=True, exist_ok=True)
@@ -154,22 +124,17 @@ def train_for_feature_file(cfg, features_file):
     for name, model in best_models.items():
         dump(model, models_dir / f"{name}_best.joblib")
 
-    print(f"💾 Saved MULTI-OUTPUT models to: {models_dir}")
+    print(f"Saved MULTI-OUTPUT models to: {models_dir}")
 
-    # 6) Save validation metrics
     result_df = pd.DataFrame(results)
     result_dir = results_root / granularity
     result_dir.mkdir(parents=True, exist_ok=True)
     result_df.to_csv(result_dir / "regression_val_metrics.csv", index=False)
 
-    print(f"📊 Validation metrics saved to: {result_dir}")
+    print(f"Validation metrics saved to: {result_dir}")
 
     return result_df
 
-
-# ============================================================
-# 🚀 Train both hourly + daily
-# ============================================================
 if __name__ == "__main__":
     cfg = load_global_config()
 
@@ -184,4 +149,4 @@ if __name__ == "__main__":
         if (feature_dir / f).exists():
             train_for_feature_file(cfg, f)
         else:
-            print(f"⚠️ Skip {f}: file not found.")
+            print(f"Skip {f}: file not found.")

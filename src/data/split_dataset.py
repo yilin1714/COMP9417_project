@@ -1,13 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-split_dataset.py
-========================
-Split the feature-enhanced Air Quality dataset
-into train / validation / test sets based on time.
-
-Now supports directly passing in the feature file name.
-"""
 
 import pandas as pd
 from pathlib import Path
@@ -20,20 +10,16 @@ def split_dataset(features_file, cfg, val_ratio=0.1):
     datetime_col = cfg["data"]["datetime_col"]
     targets = cfg["data"]["targets"]
 
-    # 选择 hourly 或 daily 的前缀
     prefix = features_file.replace("_features.csv", "").replace(".csv", "")
 
-    # 1️⃣ Load feature file
     feature_path = root / "data/features" / features_file
-    print(f"📂 Loading features from: {feature_path}")
+    print(f"Loading features from: {feature_path}")
 
     df = pd.read_csv(feature_path, parse_dates=[datetime_col])
     df = df.sort_values(datetime_col).reset_index(drop=True)
 
-    # 删除全 NaN 列
     df = df.dropna(axis=1, how="all")
 
-    # 2️⃣ Split
     train_val_df = df[df[datetime_col].dt.year == 2004]
     test_df = df[df[datetime_col].dt.year == 2005]
 
@@ -41,7 +27,6 @@ def split_dataset(features_file, cfg, val_ratio=0.1):
     train_df = train_val_df.iloc[:val_idx]
     val_df = train_val_df.iloc[val_idx:]
 
-    # Fill NaN
     train_df = train_df.ffill().bfill()
     val_df = val_df.ffill().bfill()
     test_df = test_df.ffill().bfill()
@@ -57,7 +42,6 @@ def split_dataset(features_file, cfg, val_ratio=0.1):
     X_test = test_df[feature_cols]
     y_test = test_df[targets]
 
-    # 3️⃣ Save split files — with prefix!
     output_dir = root / "data" / "splits"
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -68,11 +52,10 @@ def split_dataset(features_file, cfg, val_ratio=0.1):
     X_test.to_csv(output_dir / f"X_test_{prefix}.csv", index=False)
     y_test.to_csv(output_dir / f"y_test_{prefix}.csv", index=False)
 
-    print(f"💾 Saved split files for {prefix} in data/splits/")
-    print("✅ Dataset split completed.")
+    print(f"Saved split files for {prefix} in data/splits/")
+    print("Dataset split completed.")
 
     return X_train, X_val, X_test, y_train, y_val, y_test
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

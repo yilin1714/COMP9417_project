@@ -1,23 +1,11 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-feature_engineering_hourly.py
-============================
-Generate HOURLY feature set only.
-Completely independent version (no shared utils).
-"""
 
 import pandas as pd
 import numpy as np
 from pathlib import Path
 from src.data.preprocess import load_global_config
 
-
-# ============================================================
-# 🧩 Feature Engineering (hourly version)
-# ============================================================
 def create_features_hourly(input_path, output_path, cfg):
-    print(f"📂 Loading cleaned data from: {input_path}")
+    print(f"Loading cleaned data from: {input_path}")
 
     df = pd.read_csv(input_path, parse_dates=[cfg["data"]["datetime_col"]])
     df.sort_values(cfg["data"]["datetime_col"], inplace=True)
@@ -26,7 +14,6 @@ def create_features_hourly(input_path, output_path, cfg):
     targets = cfg["data"]["targets"]
     fe_params = cfg["data"]["feature_engineering"]
 
-    # 强制 hourly 模式
     granularity = "hourly"
     horizons = cfg["prediction"]["horizons_hourly"]
 
@@ -35,28 +22,18 @@ def create_features_hourly(input_path, output_path, cfg):
     include_time_features = fe_params.get("include_time_features", True)
     use_cyclical_encoding = fe_params.get("use_cyclical_encoding", True)
 
-
-    # =======================================================
-    # Drop columns
-    # =======================================================
     drop_cols = cfg["data"].get("drop_columns", [])
     for col in drop_cols:
         if col in df.columns:
             df.drop(columns=[col], inplace=True)
 
-    # =======================================================
-    # 1️⃣ Lag Features
-    # =======================================================
-    print(f"🕒 Generating hourly lag features (lookback={lookback})...")
+    print(f"Generating hourly lag features (lookback={lookback})...")
     lag_features = {}
     for lag in range(1, lookback + 1):
         for tgt in targets:
             lag_features[f"{tgt}_t-{lag}"] = df[tgt].shift(lag)
 
-    # =======================================================
-    # 2️⃣ Rolling Features
-    # =======================================================
-    print("📈 Generating hourly rolling features...")
+    print("Generating hourly rolling features...")
     roll_features = {}
     suffix = "h"
 
@@ -67,11 +44,8 @@ def create_features_hourly(input_path, output_path, cfg):
 
     df = pd.concat([df, pd.DataFrame(lag_features), pd.DataFrame(roll_features)], axis=1)
 
-    # =======================================================
-    # 3️⃣ Time Features (hour/week/month)
-    # =======================================================
     if include_time_features:
-        print("🗓️ Adding hourly time features...")
+        print("Adding hourly time features...")
 
         df["weekday"] = df[datetime_col].dt.dayofweek
         df["month"] = df[datetime_col].dt.month
@@ -87,38 +61,28 @@ def create_features_hourly(input_path, output_path, cfg):
             df["hour_sin"] = np.sin(2 * np.pi * df["hour"] / 24)
             df["hour_cos"] = np.cos(2 * np.pi * df["hour"] / 24)
 
-    # =======================================================
-    # 4️⃣ Multi-horizon Targets
-    # =======================================================
-    print(f"⏩ Generating hourly future targets: {horizons}")
+    print(f"Generating hourly future targets: {horizons}")
     for tgt in targets:
         for h in horizons:
             df[f"{tgt}_t+{h}{suffix}"] = df[tgt].shift(-h)
 
-    # =======================================================
-    # 5️⃣ Save
-    # =======================================================
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(output_path, index=False)
 
-    print(f"✅ HOURLY feature file saved to: {output_path}")
-    print(f"📊 Final hourly shape: {df.shape}")
+    print(f"HOURLY feature file saved to: {output_path}")
+    print(f"Final hourly shape: {df.shape}")
 
 
-# ============================================================
-# 🚀 Script Entry
-# ============================================================
 if __name__ == "__main__":
     cfg = load_global_config()
     root = Path(__file__).resolve().parents[2]
 
     input_path = root / cfg["paths"]["processed_data"]
 
-    # 输出到 data/features/hourly/hourly_features.csv
     features_dir = root / cfg["paths"]["features_dir"]
     features_dir.mkdir(parents=True, exist_ok=True)
     output_path = features_dir / "hourly_features.csv"
 
     create_features_hourly(input_path, output_path, cfg)
 
-    print("\n🎉 HOURLY feature generation completed!\n")
+    print("\nHOURLY feature generation completed!\n")

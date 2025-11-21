@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-plot_pollutants.py
-==========================
-📊 Visualize pollutant concentration time series.
-"""
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -12,27 +5,17 @@ from pathlib import Path
 from src.data.preprocess import load_global_config
 
 def plot_pollutant_timeseries(data_path, datetime_col='Date', pollutants=None, save_path=None):
-    """
-    绘制多个污染物的每日平均浓度折线图（自动处理缺失值）。
-    Args:
-        data_path (str or Path): 数据文件路径 (CSV)
-        datetime_col (str): 日期时间列名
-        pollutants (list[str]): 要绘制的污染物列
-        save_path (str or Path): 保存路径（可选）
-    """
+
     import pandas as pd
     import matplotlib.pyplot as plt
     from pathlib import Path
 
-    # 1️⃣ 读取数据
     df = pd.read_csv(data_path)
     df[datetime_col] = pd.to_datetime(df[datetime_col])
 
-    # 2️⃣ 自动检测数值列
     if pollutants is None:
         pollutants = [col for col in df.columns if col not in [datetime_col]]
 
-    # 3️⃣ 按天求平均
     df_daily = (
         df.set_index(datetime_col)
           .resample('D')[pollutants]
@@ -40,10 +23,8 @@ def plot_pollutant_timeseries(data_path, datetime_col='Date', pollutants=None, s
           .reset_index()
     )
 
-    # 4️⃣ 缺失值处理（线性插值 + 前向填充兜底）
     df_daily = df_daily.interpolate(method='linear').ffill()
 
-    # 5️⃣ 绘图
     fig, axes = plt.subplots(len(pollutants), 1, figsize=(12, 8), sharex=True)
     fig.suptitle('Daily Average Pollutant Concentrations (Interpolated)', fontsize=14)
 
@@ -56,11 +37,10 @@ def plot_pollutant_timeseries(data_path, datetime_col='Date', pollutants=None, s
     plt.xlabel('Date')
     plt.tight_layout(rect=[0, 0, 1, 0.96])
 
-    # 6️⃣ 保存或显示
     if save_path:
         Path(save_path).parent.mkdir(parents=True, exist_ok=True)
         plt.savefig(save_path, dpi=300)
-        print(f"✅ Saved daily average plot (NaN handled) to {save_path}")
+        print(f"Saved daily average plot (NaN handled) to {save_path}")
     else:
         plt.show()
 
